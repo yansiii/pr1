@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Applied Jobs - Job Application Tracker</title>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="applied.html">Applied Jobs</a></li>
+        <li><a href="bookmarks.html">Bookmark</a></li>
+    </ul>
+</nav>
+
+<h1>Applied Jobs</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Job Type</th>
+            <th>Expected Salary</th>
+        </tr>
+    </thead>
+    <tbody id="jobTable">
+    </tbody>
+</table>
+
+<script>
+window.onload = function() {
+    const jobList = JSON.parse(localStorage.getItem('jobList') || "[]");
+    const tableBody = document.getElementById('jobTable');
+    jobList.forEach(job => {
+        const row = `<tr>
+                        <td>${job.name}</td>
+                        <td>${job.email}</td>
+                        <td>${job.jobType}</td>
+                        <td>${job.salary}</td>
+                     </tr>`;
+        tableBody.innerHTML += row;
+    });
+};
+</script>
+</body>
+</html>
